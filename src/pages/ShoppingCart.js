@@ -19,5 +19,5 @@ export default class ShoppingCart extends Component {
 }
 
 ShoppingCart.propTypes = {
-  history: PropTypes.arrayOf(PropTypes.shape).isRequired,
+  history: PropTypes.shape(PropTypes.shape).isRequired,
 };

@@ -70,5 +70,5 @@ export default class Home extends Component {
 }
 
 Home.propTypes = {
-  history: PropTypes.arrayOf(PropTypes.shape).isRequired,
+  history: PropTypes.shape(PropTypes.shape).isRequired,
 };
