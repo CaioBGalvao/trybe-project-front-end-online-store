@@ -1,16 +1,16 @@
 .HomeDiv {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  width: 100vw;
-  height: 100vh;
   background-color: gray;
+  bottom: 0;
+  height: 100vh;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100vw;
 }
 
 .CategorySideBar {
-  width: 20%;
   display: flex;
   flex-flow: column nowrap;
+  width: 20%;
 }
