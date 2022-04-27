@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import CategoryList from '../components/CategoryList';
 import Products from '../components/Products';
 import SearchNCart from '../components/SearchNCart';
 import { getProductsFromCategoryAndQuery } from '../services/api';
 
-class Home extends Component {
+export default class Home extends Component {
   constructor() {
     super();
 
@@ -20,8 +21,8 @@ class Home extends Component {
     this.setState({ searchKey: inputValue });
   };
 
-  searchProducts = async (e) => {
-    e.preventDefault();
+  searchProducts = async (event) => {
+    event.preventDefault();
     const { searchKey } = this.state;
     const { results } = await getProductsFromCategoryAndQuery(
       undefined,
@@ -43,6 +44,7 @@ class Home extends Component {
   };
 
   render() {
+    const { history } = this.props;
     const { searchKey, resultSearch, foundSomething } = this.state;
     const initialMessage = (
       <h1 data-testid="home-initial-message">
@@ -51,6 +53,7 @@ class Home extends Component {
     return (
       <div className="HomeDiv">
         <SearchNCart
+          history={ history }
           searchKey={ searchKey }
           searchProducts={ this.searchProducts }
           setInputSearch={ this.setInputSearch }
@@ -66,4 +69,6 @@ class Home extends Component {
   }
 }
 
-export default Home;
+Home.propTypes = {
+  history: PropTypes.arrayOf(PropTypes.shape).isRequired,
+};
