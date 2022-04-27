@@ -42,7 +42,7 @@ export default class SearchNCart extends Component {
 }
 
 SearchNCart.propTypes = {
-  history: PropTypes.arrayOf(PropTypes.shape).isRequired,
+  history: PropTypes.shape(PropTypes.shape).isRequired,
   searchKey: PropTypes.string.isRequired,
   searchProducts: PropTypes.func.isRequired,
   setInputSearch: PropTypes.func.isRequired,
