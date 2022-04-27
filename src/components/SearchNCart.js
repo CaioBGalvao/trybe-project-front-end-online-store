@@ -28,14 +28,21 @@ export default class SearchNCart extends Component {
             Pesquisar
           </button>
         </form>
-        <button type="button" onClick={ this.goCart }>Carrinho de Compras</button>
+        <button
+          data-testid="shopping-cart-button"
+          type="button"
+          onClick={ this.goCart }
+        >
+          Carrinho de Compras
+
+        </button>
       </>
     );
   }
 }
 
 SearchNCart.propTypes = {
-  history: PropTypes.arrayOf(PropTypes.object).isRequired,
+  history: PropTypes.arrayOf(PropTypes.shape).isRequired,
   searchKey: PropTypes.string.isRequired,
   searchProducts: PropTypes.func.isRequired,
   setInputSearch: PropTypes.func.isRequired,

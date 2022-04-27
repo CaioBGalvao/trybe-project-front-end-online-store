@@ -12,12 +12,12 @@ export default class ShoppingCart extends Component {
         <>
           <button type="button" onClick={ this.goBack }>Voltar</button>
           <h1>Carrinho de Compras</h1>
-          <h1>Seu Carrinho está vazio</h1>
+          <h1 data-testid="shopping-cart-empty-message">Seu Carrinho está vazio</h1>
         </>
       );
     }
 }
 
 ShoppingCart.propTypes = {
-  history: PropTypes.arrayOf(PropTypes.object).isRequired,
+  history: PropTypes.arrayOf(PropTypes.shape).isRequired,
 };
