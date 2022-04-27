@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { getCategories } from '../services/api';
 
-export class CategoryList extends Component {
+class CategoryList extends Component {
   constructor() {
     super();
 
@@ -33,9 +33,6 @@ export class CategoryList extends Component {
 
     return (
       <div className="CategoryListDiv">
-        <h1 data-testid="home-initial-message">
-          Digite algum termo de pesquisa ou escolha uma categoria.
-        </h1>
         {!loading && (
           <nav className="CategorySideBar">
             {categoriesList.map((category) => (
