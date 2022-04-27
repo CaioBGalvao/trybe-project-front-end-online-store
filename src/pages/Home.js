@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { getProductsFromCategoryAndQuery } from '../services/api';
+import { CategoryList } from '../components/CategoryList';
 import FormInput from '../components/FormInput';
 import ProductCard from '../components/Productcard';
 
@@ -39,6 +40,7 @@ class Home extends Component {
     const { searchKey, resultSearch, foundSomething } = this.state;
     return (
       <div>
+        <CategoryList />
         <form onSubmit={ this.searchProducts }>
           <FormInput
             htmlFor="searchProducts"
@@ -76,6 +78,7 @@ class Home extends Component {
               : <p>Nenhum produto foi encontrado</p>
           }
         </section>
+
       </div>
     );
   }
