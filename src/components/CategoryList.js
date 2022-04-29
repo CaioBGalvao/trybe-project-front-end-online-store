@@ -32,7 +32,7 @@ class CategoryList extends Component {
     const { loading, categoriesList } = this.state;
 
     return (
-      <div className="CategoryListDiv">
+      <div className="CategoryListDiv col-6">
         {!loading && (
           <nav className="CategorySideBar">
             {categoriesList.map((category) => (

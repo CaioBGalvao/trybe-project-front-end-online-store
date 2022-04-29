@@ -51,19 +51,23 @@ export default class Home extends Component {
         Digite algum termo de pesquisa ou escolha uma categoria.
       </h1>);
     return (
-      <div className="HomeDiv">
-        <SearchNCart
-          history={ history }
-          searchKey={ searchKey }
-          searchProducts={ this.searchProducts }
-          setInputSearch={ this.setInputSearch }
-        />
+      <div className="container">
+        <div className="row">
+          <SearchNCart
+            history={ history }
+            searchKey={ searchKey }
+            searchProducts={ this.searchProducts }
+            setInputSearch={ this.setInputSearch }
+          />
+        </div>
         {initialMessage}
-        <CategoryList />
-        <Products
-          foundSomething={ foundSomething }
-          resultSearch={ resultSearch }
-        />
+        <div className="row">
+          <CategoryList />
+          <Products
+            foundSomething={ foundSomething }
+            resultSearch={ resultSearch }
+          />
+        </div>
       </div>
     );
   }

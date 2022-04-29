@@ -7,7 +7,7 @@ class Products extends Component {
     const { resultSearch, foundSomething } = this.props;
 
     return (
-      <section className="products">
+      <section className="produts">
         {foundSomething ? (
           resultSearch.map((product) => (
             <ProductCard
