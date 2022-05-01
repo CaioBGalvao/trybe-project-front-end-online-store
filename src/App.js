@@ -21,6 +21,11 @@ export default class App extends Component {
     };
   }
 
+  setInputSearch = ({ target }) => {
+    const inputValue = target.value;
+    this.setState({ searchKey: inputValue });
+  };
+
   searchProducts = async (event) => {
     event.preventDefault();
     const { searchKey } = this.state;
@@ -77,6 +82,7 @@ export default class App extends Component {
                 searchProducts={ this.searchProducts }
                 addToCart={ this.addToCart }
                 chooseCategory={ this.chooseCategory }
+                setInputSearch={ this.setInputSearch }
               />
             ) }
           />
