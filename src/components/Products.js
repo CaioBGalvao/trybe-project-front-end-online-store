@@ -4,7 +4,7 @@ import ProductCard from './Productcard';
 
 class Products extends Component {
   render() {
-    const { resultSearch, foundSomething } = this.props;
+    const { resultSearch, foundSomething, addToCart } = this.props;
 
     return (
       <section className="products">
@@ -12,9 +12,11 @@ class Products extends Component {
           resultSearch.map((product) => (
             <ProductCard
               key={ product.id }
+              productId={ product.id }
               title={ product.title }
               img={ product.thumbnail }
               price={ product.price }
+              addToCart={ addToCart }
             />
           ))
         ) : (
@@ -28,6 +30,7 @@ class Products extends Component {
 Products.propTypes = {
   resultSearch: PropTypes.arrayOf(PropTypes.shape).isRequired,
   foundSomething: PropTypes.bool.isRequired,
+  addToCart: PropTypes.func.isRequired,
 };
 
 export default Products;

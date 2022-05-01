@@ -3,18 +3,13 @@ import PropTypes from 'prop-types';
 import CategoryList from '../components/CategoryList';
 import Products from '../components/Products';
 import SearchNCart from '../components/SearchNCart';
-import { getProductsFromCategoryAndQuery } from '../services/api';
 
 export default class Home extends Component {
   constructor() {
     super();
 
-    this.chooseCategory = this.chooseCategory.bind(this);
-
     this.state = {
       searchKey: '',
-      resultSearch: [],
-      foundSomething: true,
     };
   }
 
@@ -23,37 +18,17 @@ export default class Home extends Component {
     this.setState({ searchKey: inputValue });
   };
 
-  searchProducts = async (event) => {
-    event.preventDefault();
-    const { searchKey } = this.state;
-    const { results } = await getProductsFromCategoryAndQuery(
-      undefined,
-      searchKey,
-    );
-    this.setState(
-      {
-        resultSearch: [...results],
-      },
-      () => {
-        const { resultSearch } = this.state;
-        if (resultSearch.length === 0) {
-          this.setState({ foundSomething: false });
-        } else {
-          this.setState({ foundSomething: true });
-        }
-      },
-    );
-  };
-
-  async chooseCategory({ target }) {
-    const categoryId = target.name;
-    const { results } = await getProductsFromCategoryAndQuery(categoryId, undefined);
-    this.setState({ resultSearch: [...results] });
-  }
-
   render() {
-    const { history } = this.props;
-    const { searchKey, resultSearch, foundSomething } = this.state;
+    const {
+      history,
+      resultSearch,
+      foundSomething,
+      productsOnCart,
+      searchProducts,
+      addToCart,
+      chooseCategory,
+    } = this.props;
+    const { searchKey } = this.state;
     const initialMessage = (
       <h1 data-testid="home-initial-message">
         Digite algum termo de pesquisa ou escolha uma categoria.
@@ -63,16 +38,18 @@ export default class Home extends Component {
         <SearchNCart
           history={ history }
           searchKey={ searchKey }
-          searchProducts={ this.searchProducts }
+          searchProducts={ searchProducts }
           setInputSearch={ this.setInputSearch }
+          productsOnCart={ productsOnCart }
         />
         {initialMessage}
         <CategoryList
-          chooseCategory={ this.chooseCategory }
+          chooseCategory={ chooseCategory }
         />
         <Products
           foundSomething={ foundSomething }
           resultSearch={ resultSearch }
+          addToCart={ addToCart }
         />
       </div>
     );
@@ -81,4 +58,10 @@ export default class Home extends Component {
 
 Home.propTypes = {
   history: PropTypes.shape(PropTypes.shape).isRequired,
+  resultSearch: PropTypes.arrayOf(PropTypes.shape).isRequired,
+  foundSomething: PropTypes.bool.isRequired,
+  productsOnCart: PropTypes.arrayOf(PropTypes.shape).isRequired,
+  searchProducts: PropTypes.func.isRequired,
+  addToCart: PropTypes.func.isRequired,
+  chooseCategory: PropTypes.func.isRequired,
 };
