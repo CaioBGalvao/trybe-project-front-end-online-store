@@ -14,6 +14,7 @@ export default class App extends Component {
     this.addToCart = this.addToCart.bind(this);
 
     this.state = {
+      searchKey: '',
       resultSearch: [],
       productsOnCart: [],
       foundSomething: true,
@@ -59,7 +60,7 @@ export default class App extends Component {
   }
 
   render() {
-    const { resultSearch, productsOnCart, foundSomething } = this.state;
+    const { searchKey, resultSearch, productsOnCart, foundSomething } = this.state;
     return (
       <BrowserRouter>
         <Switch>
@@ -68,6 +69,7 @@ export default class App extends Component {
             exact
             render={ (props) => (
               <Home
+                searchKey={ searchKey }
                 resultSearch={ resultSearch }
                 foundSomething={ foundSomething }
                 productsOnCart={ productsOnCart }

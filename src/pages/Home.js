@@ -5,13 +5,6 @@ import Products from '../components/Products';
 import SearchNCart from '../components/SearchNCart';
 
 export default class Home extends Component {
-  constructor() {
-    super();
-
-    this.state = {
-      searchKey: '',
-    };
-  }
 
   setInputSearch = ({ target }) => {
     const inputValue = target.value;
@@ -21,6 +14,7 @@ export default class Home extends Component {
   render() {
     const {
       history,
+      searchKey,
       resultSearch,
       foundSomething,
       productsOnCart,
@@ -28,7 +22,6 @@ export default class Home extends Component {
       addToCart,
       chooseCategory,
     } = this.props;
-    const { searchKey } = this.state;
     const initialMessage = (
       <h1 data-testid="home-initial-message">
         Digite algum termo de pesquisa ou escolha uma categoria.
@@ -58,6 +51,7 @@ export default class Home extends Component {
 
 Home.propTypes = {
   history: PropTypes.shape(PropTypes.shape).isRequired,
+  searchKey: PropTypes.string.isRequired,
   resultSearch: PropTypes.arrayOf(PropTypes.shape).isRequired,
   foundSomething: PropTypes.bool.isRequired,
   productsOnCart: PropTypes.arrayOf(PropTypes.shape).isRequired,
