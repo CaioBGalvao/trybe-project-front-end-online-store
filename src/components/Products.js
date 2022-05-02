@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import ProductCard from './Productcard';
+import ProductCard from './ProductCard';
 
 export default class Products extends Component {
 productsCardsGenerator = () => {
