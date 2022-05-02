@@ -33,7 +33,7 @@ export default class Home extends Component {
           />
         </div>
         {initialMessage}
-        <div className="row">
+        <div>
           <CategoryList
             chooseCategory={ chooseCategory }
           />
