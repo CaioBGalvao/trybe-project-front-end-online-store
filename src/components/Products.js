@@ -7,7 +7,7 @@ export default class Products extends Component {
     const { resultSearch, foundSomething, addToCart } = this.props;
 
     return (
-      <section className="products">
+      <section>
         {foundSomething ? (
           resultSearch.map((product) => (
             <ProductCard

@@ -22,24 +22,29 @@ export default class Home extends Component {
         Digite algum termo de pesquisa ou escolha uma categoria.
       </h1>);
     return (
-      <div className="HomeDiv">
-        <SearchNCart
-          history={ history }
-          searchKey={ searchKey }
-          searchProducts={ searchProducts }
-          setInputSearch={ setInputSearch }
-          productsOnCart={ productsOnCart }
-        />
+      <div className="container">
+        <div className="row">
+          <SearchNCart
+            history={ history }
+            searchKey={ searchKey }
+            searchProducts={ searchProducts }
+            setInputSearch={ setInputSearch }
+            productsOnCart={ productsOnCart }
+          />
+        </div>
         {initialMessage}
-        <CategoryList
-          chooseCategory={ chooseCategory }
-        />
-        <Products
-          foundSomething={ foundSomething }
-          resultSearch={ resultSearch }
-          addToCart={ addToCart }
-        />
+        <div>
+          <CategoryList
+            chooseCategory={ chooseCategory }
+          />
+          <Products
+            foundSomething={ foundSomething }
+            resultSearch={ resultSearch }
+            addToCart={ addToCart }
+          />
+        </div>
       </div>
+
     );
   }
 }

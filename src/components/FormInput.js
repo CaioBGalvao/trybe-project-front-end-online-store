@@ -11,7 +11,7 @@ class FormInput extends React.Component {
       onChange,
       dataTestid } = this.props;
     return (
-      <label htmlFor={ htmlFor }>
+      <label htmlFor={ htmlFor } className="form-label">
         <input
           type={ type }
           name={ name }
