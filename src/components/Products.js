@@ -2,32 +2,34 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ProductCard from './Productcard';
 
-class Products extends Component {
-  render() {
-    const { resultSearch, foundSomething } = this.props;
+export default class Products extends Component {
+productsCardsGenerator = () => {
+  const { resultSearch } = this.props;
+  resultSearch.map((product) => (
+    <ProductCard
+      key={ product.id }
+      id={ product.id }
+      title={ product.title }
+      img={ product.thumbnail }
+      price={ product.price }
+    />
+  ));
+}
 
-    return (
-      <section className="products">
-        {foundSomething ? (
-          resultSearch.map((product) => (
-            <ProductCard
-              key={ product.id }
-              title={ product.title }
-              img={ product.thumbnail }
-              price={ product.price }
-            />
-          ))
-        ) : (
-          <p>Nenhum produto foi encontrado</p>
+render() {
+  const { foundSomething } = this.props;
+
+  return (
+    <section className="products">
+      {foundSomething ? this.productsCardsGenerator
+        : (<p>Nenhum produto foi encontrado</p>
         )}
-      </section>
-    );
-  }
+    </section>
+  );
+}
 }
 
 Products.propTypes = {
   resultSearch: PropTypes.arrayOf(PropTypes.shape).isRequired,
   foundSomething: PropTypes.bool.isRequired,
 };
-
-export default Products;
