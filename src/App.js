@@ -97,10 +97,11 @@ export default class App extends Component {
             ) }
           />
           <Route
-            path="/productdetail/$:id"
+            path="/productdetail/:id"
             render={ (props) => (
               <ProductsDetail
                 { ...props }
+                resultSearch={ resultSearch }
               />
             ) }
           />
