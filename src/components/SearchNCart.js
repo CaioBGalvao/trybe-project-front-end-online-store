@@ -12,7 +12,7 @@ export default class SearchNCart extends Component {
 
     return (
       <>
-        <form onSubmit={ searchProducts } className="col-6">
+        <form className="col-6">
           <div className="input-group">
             <span className="input-group-text" id="basic-addon1">
               <i className="bi bi-search" />
@@ -31,7 +31,8 @@ export default class SearchNCart extends Component {
           </div>
         </form>
         <button
-          type="submit"
+          onClick={ searchProducts }
+          type="button"
           data-testid="query-button"
           className="btn btn-primary form-control col-6 w-25"
         >
