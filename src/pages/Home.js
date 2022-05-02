@@ -9,8 +9,6 @@ export default class Home extends Component {
   constructor() {
     super();
 
-    this.chooseCategory = this.chooseCategory.bind(this);
-
     this.state = {
       searchKey: '',
       resultSearch: [],
@@ -45,7 +43,7 @@ export default class Home extends Component {
     );
   };
 
-  async chooseCategory({ target }) {
+  chooseCategory = async ({ target }) => {
     const categoryId = target.name;
     const { results } = await getProductsFromCategoryAndQuery(categoryId, undefined);
     this.setState({ resultSearch: [...results] });
