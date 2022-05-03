@@ -102,6 +102,7 @@ export default class App extends Component {
               <ProductsDetail
                 { ...props }
                 resultSearch={ resultSearch }
+                addToCart={ this.addToCart }
               />
             ) }
           />
